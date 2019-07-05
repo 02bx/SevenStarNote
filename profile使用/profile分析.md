@@ -113,7 +113,7 @@ Content-Length: 0
 
 ```
 抓取流量(这里使用hashdump演示)
-分为连个阶段:
+分为两个阶段:
 >1:client向server发送心跳包 server向client发送执行的命令
 
 ![](./img/1.png)
@@ -121,7 +121,7 @@ Content-Length: 0
 
 ![](./img/2.png)
 
-###心跳包的抓取
+### 心跳包的抓取
 client上线后会定时向server发送一个心跳包
 ![](./img/4.png)
 心跳包的发送时间与profile中的设置相关，上面设置为3s一次，抖动为10%</br>
@@ -129,7 +129,7 @@ client上线后会定时向server发送一个心跳包
 ![](./img/5.png)
 心跳包中的大部分字段相相同 不同的地方是cookie 也就是我们设置用来伪装的地方
 心跳包只是client链接server 所以server不需要返回 一般情况下content为空
-###Tricks
+### Tricks
 这里尽管使用了profile进行伪装，仍可以发现:
 >1:在1阶段中client请求字段位于URI或者cookie中 server返回的数据非常大(含有相应的操作指令)</br>
 >2:在2阶段中client返回结果位于content中 server通常不返回数据(server只需接收返回结果而无需响应)</br>
