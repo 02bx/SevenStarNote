@@ -38,9 +38,10 @@ chown -R nginx:nginx /www
 ![](6.png)
 程序将缓存文件写在了`/data/template/`目录下，文件名由DISCUZ_LANG等多个变量组成，继续追踪DISCUZ_LANG，还是在`function_core.php`
 ![](7.png)
-程序全部变量`$_G['config']['output']['language']`继续追踪
+从变量`$_G['config']['output']['language']`获取，继续追踪
 在`/source/class/discuz/discuz_application.php`中找到
 ![](8.png)
+![](11.png)
 ![](9.png)
 确定了`$lng`这个参数来自于cookie中，由于`$lng`并没有过滤，所以导致`tmplate`模板名可控，这样在被`include_once`时就可以执行代码
 
